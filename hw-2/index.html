@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home work 2</title>
+</head>
+<body>
+    <script>
+        price = 0;
+        applePrice = 10;
+        orangePrice = 12;
+        kiwiPrice = 15;
+
+        answer = prompt("Do you want fruits?", "yes");
+        if (answer === 'yes' || answer === '+') {
+            alert("Ok, let's start! 😉");
+            
+            appleAnswer = prompt("Do you want 🍎?");
+            if (appleAnswer === 'yes' || appleAnswer === '+') {
+                appleAmount = parseInt(prompt("Enter count of 🍎"));
+                if(!isNaN(appleAmount)) {
+                    appleMoney = appleAmount*applePrice;
+                    price = appleMoney;
+                }
+                };
+
+            orangeAnswer = prompt("Do you want 🍊?");
+            if (orangeAnswer === 'yes' || orangeAnswer === '+') {
+                orangeAmount = parseInt(prompt("Enter count of 🍊"));
+                if(!isNaN(orangeAmount)) {
+                    orangeMoney = orangeAmount*orangePrice;
+                    price = appleMoney + orangeMoney;
+                };
+            };
+
+            kiwiAnswer = prompt("Do you want 🥝?");
+            if (kiwiAnswer === 'yes' || kiwiAnswer === '+') {
+                kiwiAmount = parseInt(prompt("Enter count of 🥝"));
+                if(!isNaN(kiwiAmount)) {
+                kiwiMoney = kiwiAmount*kiwiPrice;
+                price = appleMoney + orangeMoney + kiwiMoney;
+                };
+            };
+            document.write(`<h1>Final price is ${price} UAH!</h1>`);
+        } else {
+            alert("Oh, bye 😔");
+        };
+    </script>
+</body>
+</html>
