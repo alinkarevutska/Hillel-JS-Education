@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework 3</title>
+</head>
+<body>
+    <script>
+        userName = prompt("Please enter your name");
+        if(userName && isNaN(userName)) {
+            userName = userName.trim().toLowerCase();
+            firstLetter = userName[0].toUpperCase();
+            afterFirstLetter = userName.slice(1);
+            userName = firstLetter + afterFirstLetter;
+            console.log(`user name "${userName}" is valid`); 
+        } else {
+            userName = "Alina";
+            console.log(`Default user name is "Alina"`);
+        }
+
+        userSurname = prompt("Please enter your surname");
+        if(userSurname && isNaN(userSurname)){
+            userSurname = userSurname.trim().toLowerCase();
+            firstLetter = userSurname[0].toUpperCase();
+            afterFirstLetter = userSurname.slice(1);
+            userSurname = firstLetter + afterFirstLetter;
+            console.log(`user surname "${userSurname}" is valid`);
+        } else {
+            userSurname = "Revutska"
+            console.log(`Default user surname is "Revutska"`);
+        }
+
+        userEmail = prompt("Please enter your e-mail");
+        if (userEmail) {
+            userEmail = userEmail.replaceAll(" ", "").toLowerCase();
+            indexOfSobachka = userEmail.indexOf("@");
+            if (indexOfSobachka === (-1)){
+                userEmail = `not valid email <b>${userEmail}</b> (symbol @ not exist)`;
+                console.log(userEmail);
+            } else if (indexOfSobachka === 0) {
+                userEmail = `not valid email <b>${userEmail}</b> (symbol @ find in first place)`;
+                console.log(userEmail);
+            } else if (indexOfSobachka === userEmail.length-1) {
+                userEmail = `not valid email <b>${userEmail}</b> (symbol @ find in last place)`
+                console.log(userEmail);
+            }
+        } else {
+            userEmail = "email not defined";
+            console.log(userEmail);
+        }
+
+        userBirth = prompt("Please enter your date of birth");
+        if (userBirth) {
+            userBirth = userBirth.replaceAll(" ", "");
+            userBirth = parseInt(userBirth);
+            console.log(userBirth);
+            if (!isNaN(userBirth)) {
+                thisDate = new Date();
+                thisYear = thisDate.getFullYear();
+                age = thisYear - userBirth;
+            } 
+        } else {
+            userBirth = 1997;
+            age = 25;
+            console.log(userBirth);
+            }
+
+        document.write(`<ul>
+        <li>Full name: ${userName} ${userSurname}</li>
+        <li>Email: ${userEmail}</li>
+        <li>Age: ${age}</li>
+    </ul>`)
+    </script>
+</body>
+</html>
