@@ -21,14 +21,13 @@ do {
 } while (!maxNumber || maxNumber > 50 || maxNumber <= minNumber)
 console.log(`Max value of element in arr: ${maxNumber}`);
 
-for(i=0, min = minNumber, max = maxNumber; i<arrLength; i++) {
- arr[i] = Math.floor(Math.random() * (max - min + 1)) + min;
-}
+min = minNumber;
+max = maxNumber;
 
-console.log(`Array of random numbers: ${arr}`);
-arrOfPrimeNumbers = [];
+toStart: for(i=0, arrOfPrimeNumbers = [], finalSum = 0; i<arrLength; i++) {
+    //получаем рандомное число из указанного ранее диапазона чисел
+    arr[i] = Math.floor(Math.random() * (max - min + 1)) + min;
 
-toStart: for(i=0; i<arr.length; i++) {
     currentNumber = arr[i];
     if(currentNumber < 2)
         continue toStart;
@@ -38,12 +37,12 @@ toStart: for(i=0; i<arr.length; i++) {
         if(!ostatok) 
             continue toStart; 
     }
+    // если число прошло проверки, записываем его в массив простых чисел:
     arrOfPrimeNumbers.push(currentNumber);
+    // и суммируем:
+    finalSum += currentNumber;
 }
-console.log(`Array of prime numbers: ${arrOfPrimeNumbers}`);
-finalSum = 0;
 
-for (arrOfPrimeNumbers[i], i=0; i < arrOfPrimeNumbers.length; i++) {
-    finalSum += parseInt(arrOfPrimeNumbers[i]);
-}
+console.log(`Array of random numbers: ${arr}`);
+console.log(`Array of prime numbers: ${arrOfPrimeNumbers}`);
 console.log(`Sum of prime numbers is ${finalSum}`);
