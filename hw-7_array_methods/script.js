@@ -1,3 +1,18 @@
+// Дано:
+
+// hero = ['Ivan'];
+// native = ['York','Of'];
+// destination = ['Poltava','In'];
+// Используя циклы, if/else, switch/case и методы .push(), .pop(), .unshift(), .shift(), .concat(), .splice(), .reverse() .join():
+
+// 1. Объединить массивы destination, native, hero в общий массив rainbow.
+
+// 2. Сделать реверс элементов полученного массива rainbow.
+
+// 3. Изменить/добавить элементы массива rainbow так, что бы в итоге получился массив вида ['Richard','Of','York','Gave','Battle','In','Vain'];
+
+// 4. Вывести элементы полученного массива в html в виде, который представлен в прикрепленном рисунке rainbow.png.
+
 hero = ['Ivan'];
     native = ['York','Of'];
     destination = ['Poltava','In'];
