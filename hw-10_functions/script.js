@@ -22,7 +22,7 @@ operator = prompt(`Please enter operator +, or -, or *, or /`, `+`);
 
 do {
 	numberA = prompt(`Please enter number A`, 5);
-	if (typeof numberA === 'string') {
+	if (typeof numberA === 'string' && numberA !== '') {
 		numberA = numberA.replaceAll(' ', '');
 		numberA = Number(numberA);
 	} else {
@@ -32,7 +32,7 @@ do {
 
 do {
 	numberB = prompt(`Please enter number B`, 5);
-	if (typeof numberB === 'string') {
+	if (typeof numberB === 'string' && numberB !== '') {
 		numberB = numberB.replaceAll(' ', '');
 		numberB = Number(numberB);
 	} else {
