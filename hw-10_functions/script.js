@@ -8,13 +8,17 @@
 // Важно: каждая математическая операция должна быть оформлена в виде отдельной функции, которая принимает на вход два аргумента и возвращает результат соответствующего математического действия.
 
 let operator;
+const OPERATORS = ['+', '-', '*', '/'];
 let numberA;
 let numberB;
 let result;
 
 do {
-operator = prompt(`Please enter operator +, or -, or *, or /`, `+`).replaceAll(' ', '');
-} while (operator !== '+' && operator !== '-' && operator !== '*' && operator !== '/');
+operator = prompt(`Please enter operator +, or -, or *, or /`, `+`);
+	if (operator) {
+	operator = operator.replaceAll(' ', '');
+}
+} while (operator === null || OPERATORS.indexOf(operator) === -1);
 
 do {
 	numberA = prompt(`Please enter number A`, 5);
@@ -43,26 +47,27 @@ do {
 
 function calculation() {
 	operator === '+' && sum();
-	function sum() {
-		result = numberA + numberB;
-	};
-	
-	operator === '-' && differ() 
-	function differ() {
-		result = numberA - numberB;
-	};
-
-	operator === '*' && multiply() 
-	function multiply() {
-		result = numberA * numberB;
-	};
-
-	operator === '/' && division()
-	function division() {
-		result = (numberA / numberB);
-		result = result.toFixed(2);
-	};
-	console.log(`${numberA} ${operator} ${numberB} = ${result}`);
+	operator === '-' && differ(); 
+	operator === '*' && multiply(); 
+	operator === '/' && division();
+	document.write(`<p>${numberA} ${operator} ${numberB} = ${result}</p>`);
 }
+
+function sum() {
+	result = numberA + numberB;
+};
+
+function differ() {
+	result = numberA - numberB;
+};
+
+function multiply() {
+	result = numberA * numberB;
+};
+
+function division() {
+	result = (numberA / numberB);
+	result = result.toFixed(2);
+};
 
 calculation(numberA, numberB, operator);
