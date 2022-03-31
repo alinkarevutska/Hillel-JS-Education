@@ -16,35 +16,19 @@ const tableHeads = ["Name", "Team", "Score", "Items"];
 
 // 4. In filtered array find out the total score of all filtered users and print all user's data into table with <tfoot>Final summ</tfoot> tag.
 
-renderArray = (array, method, action) => document.write(`<p>${action} array with ${method}: [${array.join(' ')}]</p>`);
+renderArray = (array, method, action) => document.write(`<p>${action} array with ${method}: ${JSON.stringify(array)}</p>`);
 
-renderArrays = (array, method) => {
-    document.write (Array.isArray(array) && (`${method} arrays: [${array[0].join(', ')}], [${array[1].join(', ')}]`));
-}
 
 // ---- 1) -----
 let newArray = [];
-users.forEach(function(item) {
-    // console.log(item);  // ['john', 'red', 5, Array(3)], 
-                        // ['becky', 'blue', 10, Array(3)] ...
-    item.forEach((element, index) => {
-        // console.log(element); // john
-                            // red
-                            // 5 ...
-        if (index === 0) 
-        newArray.push(element + "!");
-    });
-});
+users.forEach((item) => newArray.push(item[0] + "!");
 
 console.log(newArray); 
 renderArray(newArray, 'forEach', 'Creating');
 
 // ---- 2) -----
 
-let arrayOfNames = users.map((item) => {
-    // console.log(item); // ['john', 'red', 5, Array(3)] ... 
-    return item[0] + '?'; 
-});
+let arrayOfNames = users.map((item) => item[0] + '?');
 
 console.log(arrayOfNames); 
 renderArray(arrayOfNames, 'Map', 'Creating');
@@ -54,7 +38,7 @@ renderArray(arrayOfNames, 'Map', 'Creating');
 let filteredArray = users.filter((item) => item[1] === 'red');
 
 console.log(filteredArray); 
-renderArrays(filteredArray, 'Filtered');
+renderArray(filteredArray, 'Filter' 'Filtered');
 
 // ---- 4) -----
 
@@ -70,14 +54,7 @@ let tableRows = filteredArray.map((item) => {
     return `<tr>${tableData.join('')}</tr>`;
 });
 
-let finalSum = 0; 
-filteredArray.map((item) => {
-    console.log(item);
-    if (typeof item[2] === 'number') {
-        finalSum += item[2];
-        return finalSum;  
-    };
-});
+let finalSum = filteredArray.reduce((sum, item) => sum+item[2], 0);
 
 document.write(`<table>
 	<thead>
