@@ -66,7 +66,7 @@ const renderTabs = (item, index) => {
     renderContent(item);
   });
 
-  if(!index) {
+  if(index === 0) {
     tab__button.classList.add('active');
     renderContent(item);
   }
@@ -79,8 +79,7 @@ const renderContent = (item) => {
 }
 
 const unactivateTabs = () => {
-  const tabs = document.querySelectorAll('.tab__button');
-  tabs.forEach(tab => tab.classList.remove('active'));
+  document.querySelector('.tab__button.active').classList.remove('active');
 }
 
 menu.forEach((item, index) => renderTabs(item, index));
