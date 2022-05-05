@@ -157,8 +157,6 @@ const users = [
     }
 ]; 
 
-const [LarryPageObj, BillGatesObj, MarkZuckenbergObj] = users;
-
 const months = [
   `January`, 
   `February`, 
@@ -175,19 +173,16 @@ const months = [
 ];
 
 class Time {
-    constructor() {
-    }
-
     static get date() {
         return new Date();
     }
 
     static get day() {
-        return this.date().getUTCDate();
+        return Time.date.getUTCDate();
     }
 
     static get month() {
-        return this.date().getMonth();
+        return Time.date.getMonth();
     }
 
     static get monthNames() {
@@ -202,11 +197,7 @@ class Time {
 // console.log(Time.monthName()) // April
 
 class Astrological extends Time {
-    constructor(){
-        super();
-    }
-
-    static astrologicalSign = (day=this.day(), month=this.monthName()) => {
+    static astrologicalSign = (day=Time.day, month=Time.monthName()) => {
       
       let obj = astrologicalSigns;
    
@@ -216,7 +207,10 @@ class Astrological extends Time {
             startDateDay = obj[key].startDate.day,
             endDateDay = obj[key].endDate.day;
         
-        if (month === startDateMonth && day >= startDateDay || month === endDateMonth && day <= endDateDay) {
+        if (
+            (month === startDateMonth && day >= startDateDay) || 
+            (month === endDateMonth && day <= endDateDay)
+        ) {
           return key;
         }
       } 
@@ -225,4 +219,25 @@ class Astrological extends Time {
 
 // console.log(Astrological.astrologicalSign(13, `November`)); // Scorpio
 // console.log(Astrological.astrologicalSign()); // Taurus
+
+class Human extends Astrological {
+  constructor(object){
+    super();
+    for(let key in object){
+      this[key] = object[key];
+    }
+  }
+
+  astrologicalSign() {
+    return `${this.name} is ${Astrological.astrologicalSign(this.dayOfBirth, this.monthOfBirth)}`
+  }
+}
+
+users
+  .map(user => new Human(user))
+  .forEach(user => console.log(user.astrologicalSign()));
+
+// Larry Page is Aries
+// Bill Gates is Scorpio
+// Mark Zuckerberg is Taurus
 
