@@ -33,7 +33,7 @@ Promise
     }
 )
 .finally(
-    console.log(`in finally...🌸`)
+    () => console.log(`in finally...🌸`)
 )
 .then(
     data =>{
@@ -54,7 +54,7 @@ Promise
     }
 )
 .finally(
-    console.log(`in 2 finally...🌸`)
+    () => console.log(`in 2 finally...🌸`)
 )
 .then(newArr => {
     let body = document.querySelector('body');
@@ -71,3 +71,67 @@ Promise
 .catch(
     err => console.log(`in catch 💔, error:`, err)
 )
+
+
+
+// ------ new methods code ------
+
+const newGetFileWithPromise = file => {
+    let response = fetch(file);
+    return response.then(
+        response => response.status === 200 ? response.json() : Promise.reject(response.statusText)
+    )
+};
+
+Promise
+    .allSettled([
+        newGetFileWithPromise(`./files/data.json`),
+        newGetFileWithPromise(`./files/data2.json`)
+    ])
+.then(
+    files => {
+        console.log(`in new 1 resolve 🔥, files:`, files);
+        return files.filter(file => file.status === "fulfilled")
+        .map(item => item.value)
+    }
+)
+.finally(
+    () => console.log(`in new finally...🌸`)
+)
+.then(
+    files => {
+    
+    console.log(`in new 2 resolve 🔥, creating new users list...`)
+    
+    let newArr = files.reduce((finalArr, obj)=>{
+        finalArr.push(...obj.children);
+        return finalArr;
+    }, []);
+
+    return newArr;
+})
+.then( 
+    newArr => {
+        console.log(`in new 3 resolve 🔥, users list:`, newArr)
+        return newArr;
+    }
+)
+.finally(
+    () => console.log(`in new 2 finally...🌸`)
+)
+.then(newArr => {
+    let body = document.querySelector('body');
+    let div = document.createElement('div');
+    body.append(div);
+    let ul = document.createElement('ul');
+    div.append(ul);
+
+    let modifiedArray = newArr.map(item => `<li>${item}</li>`).join('');
+    div.innerHTML = `<h2>Final users list using Fetch method:</h2>`
+    div.innerHTML += modifiedArray;
+
+})
+.catch(
+    err => console.log(`in catch 💔, error:`, err) 
+)
+
