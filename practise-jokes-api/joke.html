@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 26 🤍💜</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+            <h2>Hey!</h2>
+            <h3>Let's try to find a joke for you: </h3>
+            <form id="jokeForm">
+                <label>
+                    <input type="radio" value="random" name="jokeType" checked> Random 
+                </label>
+
+                <label>
+                    <input type="radio" value="categories" name="jokeType"> From categories 
+                    <ul class="joke__categories" id="jokeCategories">
+                    </ul>
+                </label>  
+
+                <label>
+                    <input type="radio" value="search" name="jokeType"> Search
+                    <input type="text" id="jokeSearch" class="joke__search">
+                </label>
+
+                <button> Get a joke </button>
+
+            </form>
+    
+    <div class="container">
+        <div id="jokesContainer" class="jokes__container">
+        </div>
+
+        <div id="jokesContainerFav" class="jokes__container jokes__container_fav">
+            <h2 class="jokes__container__header">Favourite</h2>
+        </div> 
+        
+    </div>
+
+    <!-- для того, чтобы связать между собой инпуты и дать возможность выбрать только один из категории, даём им общее имя -->
+    <!-- в CSS мы не работаем с id, только с классами -->
+    
+    <script src="joke.js"></script>
+</body>
+</html>
