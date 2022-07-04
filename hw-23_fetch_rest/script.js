@@ -155,11 +155,7 @@ const renderHero = hero => {
 // --------- editing favourite checkbox status in database  ---------
 
     heroesTableFav.addEventListener('change', () => {
-        if (heroesTableFav.checked) {
-            controller (API + `/heroes/${hero.id}`, `PUT`, {name: hero.name, comics: hero.comics, favourite: true})
-        } else {
-            controller (API + `/heroes/${hero.id}`, `PUT`, {name: hero.name, comics: hero.comics, favourite: false})
-        }
+        controller (API + `/heroes/${hero.id}`, `PUT`, {favourite: heroesTableFav.checked})
     })
 
     let deleteHeroBtn = document.createElement('button');
