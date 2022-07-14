@@ -1,0 +1,102 @@
+fieldset {
+  padding: 10px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin-bottom: 20px;
+  border: 1px solid #d8d8d8;
+  border-radius: 2px;
+}
+
+form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+form label {
+  margin-bottom: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+form label span {
+  min-width: 80px;
+  margin-right: 5px;
+}
+
+form input, form select {
+  border: 1px solid #d8d8d8;
+  border-radius: 2px;
+  padding: 5px;
+  width: 100%;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #d8d8d8;
+}
+
+th {
+  padding: 10px;
+}
+
+td {
+  padding: 0;
+  vertical-align: top;
+  width: 15%;
+}
+
+.card {
+  background: lightgray;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 2px;
+  font-style: italic;
+}
+
+.card h3, .card p {
+  font-size: 14px;
+  margin: 0;
+}
+
+.card button {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+#ToDo .card {
+  background: #dddbe7;
+}
+
+#InProgress .card {
+  background: #d6e3f2;
+}
+
+#NeedTesting .card {
+  background: #efe2eb;
+}
+
+#Testing .card {
+  background: #dec7d8;
+}
+
+#Reopened .card {
+  background: #96d6d2;
+}
+
+#Done .card {
+  background: #7cdeb0;
+}
+/*# sourceMappingURL=style.css.map */

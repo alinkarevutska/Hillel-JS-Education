@@ -1,0 +1,29 @@
+import Task from "./Task.js";
+import Testing from "./Testing.js";
+import {controller, API} from "../script.js";
+
+export default class NeedTesting extends Task {
+    constructor(task) {
+        super(task);
+    }
+
+    render(){
+        let taskBlock = super.render();
+
+        let btn = document.createElement('button');
+        btn.innerHTML = `Start Testing`;
+
+        btn.addEventListener('click', async e => {
+            try {
+                let modifiedTask = await controller(API + `/tasks/${this.id}`, `PUT`, {status: 3});
+                taskBlock.remove();
+
+                new Testing(modifiedTask).render()
+            } catch(err) {
+                console.log(err)
+            }
+        })
+        taskBlock.append(btn);
+        tasksTable.querySelector('#NeedTesting').append(taskBlock);
+    }
+}
